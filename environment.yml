@@ -1,0 +1,7 @@
+name: conceptos
+channels:
+  - defaults
+dependencies:
+  - python=3.10
+  - pip:
+      - -r file:requirements.txt
