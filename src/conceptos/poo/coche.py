@@ -1,6 +1,6 @@
 from vehiculo import Vehiculo
 
-class Automovil(Vehiculo):
+class Coche(Vehiculo):
     """
     Clase para representar un automóvil, heredando de la clase Vehiculo.
 
@@ -42,3 +42,14 @@ class Automovil(Vehiculo):
             str: Representación en cadena de la información del automóvil, incluyendo marca, modelo y tipo de transmisión.
         """
         return f"Automóvil {self._marca} {self._modelo}, Transmisión: {self._tipo_transmision}"
+    
+    def __str__(self) -> str:
+        return self.mostrar_informacion()
+
+    def __eq__(self, other):
+        if isinstance(other, Coche):
+            return self._marca == other._marca and self._modelo == other._modelo and self._tipo_transmision == other._tipo_transmision
+        return False
+
+    def __hash__(self) -> int:
+        return hash((self._marca, self._modelo, self._tipo_transmision))

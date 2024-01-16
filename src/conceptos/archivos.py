@@ -20,7 +20,120 @@ with open('nuevo_archivo.txt', 'w', encoding='UTF-8') as archivo:
     archivo.write("Contenido del nuevo archivo.")
     
 with open('nuevo_archivo.txt', 'a', encoding='UTF-8') as archivo:
-    archivo.write("\nAñadiendo contenido al archivo.")
+    archivo.write("\nAñadiendo contenido 1 al archivo.")
+    archivo.write("\nAñadiendo contenido 2 al archivo.")
+    archivo.write("\nAñadiendo contenido 3 al archivo.")
+
+# Ejemplo iterando por un list de lineas
+lineas = ["Añadiendo contenido 4 al archivo.\n", "Añadiendo contenido 5 al archivo.\n", "Añadiendo contenido 6 al archivo.\n"]
+with open('nuevo_archivo.txt', 'w', encoding='UTF-8') as file:
+    for linea in lineas:
+        file.write(linea)
+
+# Uso con writelines (list)
+lineas = ["Primera línea\n", "Segunda línea\n", "Tercera línea\n"]
+with open('nuevo_archivo.txt', 'w', encoding='UTF-8') as file:
+    file.writelines(lineas)
+
+# Usando print y la redirecci´no a archivo nos podemos beneficiar de que print 
+# simepre imprimer el caracter de nueva línea
+with open('nuevo_archivo.txt', 'w', encoding='UTF-8') as file:
+    print("Primera línea con print", file=file)
+    print("Segunda línea con print", file=file)
+
+# Pero si no queremos sobreescribir el archivo usamos append
+# Ejemplo básico
+with open('ejemplo_append.txt', 'a', encoding='utf-8') as archivo:
+    archivo.write("\nAñadiendo una nueva línea al archivo.")
+
+# Append con bucle
+datos = ["Dato 1", "Dato 2", "Dato 3"]
+with open('ejemplo_append.txt', 'a', encoding='utf-8') as archivo:
+    for dato in datos:
+        archivo.write(f"\n{dato}")
+
+
+## Lectura de archivos con read()
+## Lee todo el archivo o el número especificado de caracteres.
+with open('nuevo_archivo.txt', 'r', encoding='UTF-8') as file:
+    contenido = file.read()
+print('---- contenido con read ------')    
+print(contenido)
+
+## Lee todo el archivo o el número especificado de caracteres, en este caso los 10 primeros.
+with open('nuevo_archivo.txt', 'r', encoding='UTF-8') as file:
+    contenido = file.read(10)
+print('---- contenido con read 10  ------')    
+print(contenido)
+
+## Lee la siguiente línea del archivo.
+print('---- contenido con readline ------')  
+contador = 0  
+with open('nuevo_archivo.txt', 'r', encoding='UTF-8') as file:
+    while True:
+       linea = file.readline()
+       if not linea:
+           break
+       
+       print(f'---- linea {contador} ------')   
+       contador += 1 
+       print(linea.strip())
+
+## Lee todas las líneas del archivo y las devuelve como una lista.
+with open('nuevo_archivo.txt', 'r', encoding='UTF-8') as file:
+    lineas = file.readlines()
+print(lineas)
+
+## readlines() no permite especificar rango pero es fáci con lists
+with open('nuevo_archivo.txt', 'r', encoding='UTF-8') as file:
+    lineas = file.readlines()
+lineas_seleccionadas = lineas[2:7]  # Las listas en Python tienen índice basado en cero
+print(lineas_seleccionadas)
+
+## readline() leer un numero específico de lineas
+lineas = []
+with open('nuevo_archivo.txt', 'r', encoding='UTF-8') as file:
+    for _ in range(5):
+        linea = file.readline()
+        if not linea:
+            break
+        lineas.append(linea)
+print(lineas)
+
+## con enumerate
+n = 10  # Número de líneas a leer
+lineas = []
+with open('nuevo_archivo.txt', 'r', encoding='UTF-8') as file:
+    for i, linea in enumerate(file):
+        if i >= n:
+            break
+        lineas.append(linea)
+print(lineas)
+
+# Manejo de excepciones
+try:
+    with open('archivo_inexistente.txt', 'r') as archivo:
+        contenido = archivo.read()
+except FileNotFoundError:
+    print('El archivo no existe')       
+except Exception as e:
+    print(f"Ha ocurrido un error {e}")  # Manejo genérico de excepciones
+          
+          
+# Seek()
+with open('nuevo_archivo.txt', 'r+', encoding='UTF-8') as archivo:
+    archivo.seek(12)  # Mueve el cursor a la posición 10
+    posicion = archivo.tell()  # Obtiene la posición actual del cursor
+    print(f"Posición del cursor: {posicion}")
+    archivo.write("##Texto en posición específica.##")
+     # Vuelve a mover el cursor a la posición deseada para la lectura
+    archivo.seek(0)
+    contenido = archivo.read()
+print('--- contenido ---')
+print(contenido)    
+    
+exit()
+
 
 os.listdir('.')
 

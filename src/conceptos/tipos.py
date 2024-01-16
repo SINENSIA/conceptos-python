@@ -42,6 +42,8 @@ mi_lista.reverse() # → [3, 2, 1]
 mi_lista.sort() # → [1, 2, 3]
 mi_lista.insert(1, 'a') # → [1, 'a', 2, 3]
 mi_lista.clear() # → []
+# la volvemos a construir
+mi_lista = [1 ,2, 3]
 mi_lista.extend([4, 5]) # → [1, 2, 3, 4, 5]
 mi_lista.index(3) # → 2
 mi_lista.count(1) # → 1
@@ -68,7 +70,7 @@ longitud = coordenadas[1]  # -74.0060
 latitud, longitud = coordenadas  # latitud = 40.7128, longitud = -74.0060
 [x for x in coordenadas] # → [40.7128, -74.0060]
 
-# Conjuntos
+# Conjuntos (Set)
 mi_conjunto = {1, 2, 3}
 mi_conjunto.add(4) # → {1, 2, 3, 4}
 mi_conjunto.remove(3) # → {1, 2, 4}
@@ -85,7 +87,7 @@ len(mi_conjunto) # → 3
 alumnos_python = {"Carlos", "Diego", "Gabriel"}
 alumnos_java = {"Diego", "Sofía", "Luís"}
 
-alumnos_comunes = alumnos_python & alumnos_curso_java  # {"Diego"}
+alumnos_comunes = alumnos_python & alumnos_java  # {"Diego"}
 # Diccionarios
 persona = {
     "nombre": "Juan",
@@ -130,9 +132,35 @@ print(type(numeros))  # <class 'list'>
 print(type(coordenadas))  # <class 'tuple'>
 print(type(persona))  # <class 'dict'>
 print(type(nada))  # <class 'NoneType'>
-peliculas = {
-    "Nombre de la Película": {
-        "director": "Nombre del Director",
-        "año": Año de Lanzamiento,
-        "presupuesto": Presupuesto en Millones
-    },
+
+    
+## Conversiones explícitas
+numero = int("123") # Salida: 123
+numero = float("123")  # Salida: 1.23
+numero = str(123)  # Salida: "123"
+lista = list(str(123))  # Salida: [1, 2, 3]
+tupla = tuple(str(123))  # Salida: (1, 2, 3)
+diccionario = dict([(index,x) for index,x in enumerate("123")])  # Salida: {0: 1, 1: 2, 2: 3}
+bool("123")  # Salida: True
+
+## Perdida de precisión
+entero = 1000000000
+double = 0.0000000001
+
+# Realizamos una operación simple
+resultado = entero + double
+
+# Imprimimos el resultado
+print("Resultado esperado: 1000000000.0000000001")
+print(f"Resultado obtenido: {resultado}")
+
+from decimal import Decimal, getcontext
+
+# Establece la precisión deseada
+getcontext().prec = 20
+
+entero = Decimal('1000000000')
+double = Decimal('0.0000000001')
+
+resultado = entero + double
+print("Resultado con precisión ajustada:", resultado)

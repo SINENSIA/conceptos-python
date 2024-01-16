@@ -1,4 +1,6 @@
-class Vehiculo:
+from abc import ABC, abstractmethod
+
+class Vehiculo(ABC):
     """
     Clase para representar un vehículo.
 
@@ -38,11 +40,10 @@ class Vehiculo:
         """ Establece el modelo del vehículo. """
         self._modelo = valor
 
+    
+    def testing(self):
+        return "Esto viene de vehiculo"
+    
+    @abstractmethod
     def mostrar_informacion(self):
-        """
-        Retorna una cadena de caracteres que representa la información del vehículo.
-
-        Retorna:
-            str: Representación en cadena de la información del vehículo.
-        """
-        return f"Vehículo {self._marca} {self._modelo}"
+        pass

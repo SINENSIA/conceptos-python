@@ -13,7 +13,3 @@ print("Las tres canciones más largas son:")
 for cancion in tres_mas_largas:
     print(cancion)
                    
-dict1 = {1: "Uno", 2: "Dos", 3 : "Tres"}
-dict2 = {[1,2]: "Uno", [2,3]: "Dos", [3,4]: "Tres"}
-dict3 = {"Uno": 1, "Dos": 2, "Tres": 3}
-dict4 = {(1,2): "Uno", (2,3): "Dos", (4,5): "Tres"}

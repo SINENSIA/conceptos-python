@@ -1,5 +1,6 @@
 import os
 import platform
+import re
 # Ejemplo de códigos ANSI para diferentes colores
 COLOR_ROJO = "\033[91m"
 COLOR_VERDE = "\033[92m"
@@ -37,7 +38,10 @@ def mostrar_menu():
     print('----------------------------')
     opcion = input(COLOR_VERDE + "Elige una opción: " + RESET_COLOR)
     print('----------------------------')
-    return opcion
+    if (validar(opcion)):
+        return opcion
+    else:
+        print("La entrada contiene caracteres no válidos. Está actividad será registrada para su protección.")
 
 def añadir_pelicula(peliculas):
     """
@@ -85,11 +89,11 @@ def eliminar_pelicula(peliculas):
         peliculas.pop(pelicula)
         limpiar_terminal()
         print('----------------------------')
-        print(COLOR_AMARILLO +"Película " + COLOR_AZUL + pelicula + RESET_COLOR + COLOR_ROJO +" eliminada."+ RESET_COLOR)
+        print(f"{COLOR_AMARILLO} Película {COLOR_AZUL} pelicula  {RESET_COLOR}{COLOR_ROJO} eliminada.{RESET_COLOR}")
     else:
         limpiar_terminal()
         print('----------------------------')
-        print(COLOR_AMARILLO +"La Película " + COLOR_AZUL + pelicula + RESET_COLOR + COLOR_AMARILLO +" no se encuentra en la lista."+ RESET_COLOR)
+        print(f"{COLOR_AMARILLO}La Película {COLOR_AZUL}{pelicula}{RESET_COLOR}{COLOR_AMARILLO} no se encuentra en la lista.{RESET_COLOR}")
     print('----------------------------')
     
 def mostrar_peliculas(peliculas):
@@ -122,18 +126,25 @@ def buscar_pelicula(peliculas):
     limpiar_terminal()
     print('----------------------------')
     pelicula = input( COLOR_VERDE + "Nombre de la película a buscar: "+ RESET_COLOR)
-    if pelicula in peliculas:
-        detalles = peliculas[pelicula]
-        print(f"Encontrada: {pelicula} - Director: {detalles['director']}, Año: {detalles['año']}, Presupuesto: {detalles['presupuesto']} millones")
-        limpiar_terminal()
-        print('----------------------------')
-        print(COLOR_VERDE +"La Película " + COLOR_AZUL + pelicula + RESET_COLOR + COLOR_VERDE +" se ha encontrado en la lista."+ RESET_COLOR)
-    else:
-       limpiar_terminal()
-       print('----------------------------')
-       print(COLOR_AMARILLO + "La película " + COLOR_AZUL + pelicula + RESET_COLOR + COLOR_AMARILLO + " no se encuentra" + RESET_COLOR)
-    print('----------------------------')
+    if validar(pelicula):
+        pattern = re.compile(pelicula, re.IGNORECASE)
+        for nombre, detalles in peliculas.items():
+            if pattern.search(nombre):
+                print(f"Encontrada: {nombre} - Director: {detalles['director']}, Año: {detalles['año']}, Presupuesto: {detalles['presupuesto']} millones")
+                limpiar_terminal()
+                print('----------------------------')
+                print(COLOR_VERDE +"La Película " + COLOR_AZUL + pelicula + RESET_COLOR + COLOR_VERDE +" se ha encontrado en la lista."+ RESET_COLOR)
+                break
     
+            else:
+                limpiar_terminal()
+                print('----------------------------')
+                print(COLOR_AMARILLO + "La película " + COLOR_AZUL + pelicula + RESET_COLOR + COLOR_AMARILLO + " no se encuentra" + RESET_COLOR)
+                print('----------------------------')
+    else:
+        print("La entrada contiene caracteres no válidos. Está actividad será registrada para su protección.")
+        limpiar_terminal()
+        
 def modificar_pelicula(peliculas):
     """
     Modifica una película de la lista si se encuentra en ella.
@@ -141,7 +152,7 @@ def modificar_pelicula(peliculas):
     Args:
         peliculas (_type_): _description_
     """
-    nombre = input("Nombre de la película a modificar: ")
+    nombre = input("Nombre de la película a modificar: ").strip()
     if nombre in peliculas:
         print("Introduce los nuevos datos (deja en blanco para no modificar):")
         director = input(f"Nuevo director (Actual: {peliculas[nombre]['director']}): ") or peliculas[nombre]['director']
@@ -151,6 +162,16 @@ def modificar_pelicula(peliculas):
         print("Película modificada.")
     else:
         print("La película no se encuentra en la lista.")
+        
+def validar(input):
+    """ Usamos una expresión regular para comprobar que no se introcucen carateres no esperados"""
+    validacion = re.compile(r'^[A-Za-z0-9\s]+$')
+
+    if validacion.match(input):
+        return True
+    else:
+        return False
+        
 def main():
     """
     Función principal que ejecuta el programa de gestión de películas.
@@ -177,6 +198,7 @@ def main():
         else:
             print("Opción no válida. Por favor, elige una opción del 1 al 5.")
     print('----------------------------')
+    
 if __name__ == "__main__":
     main()
 

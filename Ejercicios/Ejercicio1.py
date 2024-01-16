@@ -9,7 +9,6 @@ COLOR_NARANJA = "\033[38;5;208m"  # Código ANSI para naranja
 COLOR_MORADO = "\033[95m"         # Código ANSI para morado claro
 RESET_COLOR = "\033[0m"  # Para resetear el color a su valor por defecto
 
-
 def limpiar_terminal():
     """
     Limpia la terminal de la consola dependiendo del sistema operativo.

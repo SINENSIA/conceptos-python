@@ -19,3 +19,6 @@ def print_multilinea(texto, num_lineas):
 print_multilinea("Este texto", 4)
 
 
+str = "lorem ipsum dolro sit amen"
+
+print(str.capitalize())
