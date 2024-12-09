@@ -1,6 +1,7 @@
 """
     Como crear un archivo en python
 """
+from pathlib import Path
 import os
 import time
 import shutil
@@ -11,21 +12,22 @@ print(cwd)
 
 # cRear nun directorio
 if not os.path.exists('prueba'):
-   os.mkdir('prueba')
+    os.mkdir('prueba')
 
 # Cambiar directorio actual de trabajo
 os.chdir('prueba')
 
 with open('nuevo_archivo.txt', 'w', encoding='UTF-8') as archivo:
-    archivo.write("Contenido del nuevo archivo.")
-    
+    archivo.write("Contenido del nuevo archivo con write.")
+
 with open('nuevo_archivo.txt', 'a', encoding='UTF-8') as archivo:
     archivo.write("\nAñadiendo contenido 1 al archivo.")
     archivo.write("\nAñadiendo contenido 2 al archivo.")
     archivo.write("\nAñadiendo contenido 3 al archivo.")
 
 # Ejemplo iterando por un list de lineas
-lineas = ["Añadiendo contenido 4 al archivo.\n", "Añadiendo contenido 5 al archivo.\n", "Añadiendo contenido 6 al archivo.\n"]
+lineas = ["Añadiendo contenido 4 al archivo.\n",
+          "Añadiendo contenido 5 al archivo.\n", "Añadiendo contenido 6 al archivo.\n"]
 with open('nuevo_archivo.txt', 'w', encoding='UTF-8') as file:
     for linea in lineas:
         file.write(linea)
@@ -35,8 +37,8 @@ lineas = ["Primera línea\n", "Segunda línea\n", "Tercera línea\n"]
 with open('nuevo_archivo.txt', 'w', encoding='UTF-8') as file:
     file.writelines(lineas)
 
-# Usando print y la redirecci´no a archivo nos podemos beneficiar de que print 
-# simepre imprimer el caracter de nueva línea
+# Usando print y la redirección a archivo nos podemos beneficiar de que print
+# siempre imprime el caracter de nueva línea
 with open('nuevo_archivo.txt', 'w', encoding='UTF-8') as file:
     print("Primera línea con print", file=file)
     print("Segunda línea con print", file=file)
@@ -52,21 +54,21 @@ with open('ejemplo_append.txt', 'a', encoding='utf-8') as archivo:
     for dato in datos:
         archivo.write(f"\n{dato}")
 
-
-## Lectura de archivos con read()
-## Lee todo el archivo o el número especificado de caracteres.
+# Lectura de archivos con read()
+# Lee todo el archivo o el número especificado de caracteres.
 with open('nuevo_archivo.txt', 'r', encoding='UTF-8') as file:
     contenido = file.read()
-print('---- contenido con read ------')    
+print('---- contenido con read ------')
 print(contenido)
 
-## Lee todo el archivo o el número especificado de caracteres, en este caso los 10 primeros.
+# Lee todo el archivo o el número especificado de caracteres, en este caso los 10 primeros.
 with open('nuevo_archivo.txt', 'r', encoding='UTF-8') as file:
     contenido = file.read(10)
-print('---- contenido con read 10  ------')    
-print(contenido)
+print('---- contenido con read 10  ------')
+# print(contenido)
 
-## Lee la siguiente línea del archivo.
+# Lee la siguiente línea del archivo.
+"""
 print('---- contenido con readline ------')  
 contador = 0  
 with open('nuevo_archivo.txt', 'r', encoding='UTF-8') as file:
@@ -83,14 +85,16 @@ with open('nuevo_archivo.txt', 'r', encoding='UTF-8') as file:
 with open('nuevo_archivo.txt', 'r', encoding='UTF-8') as file:
     lineas = file.readlines()
 print(lineas)
+"""
 
-## readlines() no permite especificar rango pero es fáci con lists
+# readlines() no permite especificar rango pero es fáci con lists
 with open('nuevo_archivo.txt', 'r', encoding='UTF-8') as file:
     lineas = file.readlines()
-lineas_seleccionadas = lineas[2:7]  # Las listas en Python tienen índice basado en cero
-print(lineas_seleccionadas)
+# Las listas en Python tienen índice basado en cero
+lineas_seleccionadas = lineas[2:7]
+# print(lineas_seleccionadas)
 
-## readline() leer un numero específico de lineas
+# readline() leer un numero específico de lineas
 lineas = []
 with open('nuevo_archivo.txt', 'r', encoding='UTF-8') as file:
     for _ in range(5):
@@ -98,9 +102,9 @@ with open('nuevo_archivo.txt', 'r', encoding='UTF-8') as file:
         if not linea:
             break
         lineas.append(linea)
-print(lineas)
+# print(lineas)
 
-## con enumerate
+# con enumerate
 n = 10  # Número de líneas a leer
 lineas = []
 with open('nuevo_archivo.txt', 'r', encoding='UTF-8') as file:
@@ -108,31 +112,28 @@ with open('nuevo_archivo.txt', 'r', encoding='UTF-8') as file:
         if i >= n:
             break
         lineas.append(linea)
-print(lineas)
+# print(lineas)
 
 # Manejo de excepciones
+"""
 try:
     with open('archivo_inexistente.txt', 'r') as archivo:
         contenido = archivo.read()
 except FileNotFoundError:
     print('El archivo no existe')       
-except Exception as e:
-    print(f"Ha ocurrido un error {e}")  # Manejo genérico de excepciones
-          
-          
+     
+"""
 # Seek()
 with open('nuevo_archivo.txt', 'r+', encoding='UTF-8') as archivo:
     archivo.seek(12)  # Mueve el cursor a la posición 10
     posicion = archivo.tell()  # Obtiene la posición actual del cursor
     print(f"Posición del cursor: {posicion}")
     archivo.write("##Texto en posición específica.##")
-     # Vuelve a mover el cursor a la posición deseada para la lectura
+    # Vuelve a mover el cursor a la posición deseada para la lectura
     archivo.seek(0)
     contenido = archivo.read()
 print('--- contenido ---')
-print(contenido)    
-    
-exit()
+print(contenido)
 
 
 os.listdir('.')
@@ -167,7 +168,7 @@ else:
     print("No se puede eliminar el directorio de trabajo, porque no es el esperado.")
     print("Cambia el directorio de trabajo al directorio esperado y vuelve a intentarlo.")
     print("Directorio esperado: ", directorio_esperado)
-    print("Directorio actual: ", os.getcwd()) 
+    print("Directorio actual: ", os.getcwd())
 
 # Es una buena práctica asegurarse que estmaos en el directorio correcto
 # antes de relaizar operaciones destructivas
@@ -178,7 +179,7 @@ else:
     print("No se puede eliminar el directorio de trabajo, porque no es el esperado.")
     print("Cambia el directorio de trabajo al directorio esperado y vuelve a intentarlo.")
     print("Directorio esperado: ", directorio_esperado)
-    print("Directorio actual: ", os.getcwd()) 
+    print("Directorio actual: ", os.getcwd())
 
 shutil.copy('nuevo_archivo.txt', 'nuevo_archivo_destino.txt')
 os.remove('nuevo_archivo_destino.txt')
@@ -187,14 +188,13 @@ shutil.copy2('nuevo_archivo.txt', 'nuevo_archivo_destino.txt')
 os.remove('nuevo_archivo_destino.txt')
 
 
-        
 # shutil.copytree('test', 'test2')
 # shutil.move('source.txt', 'destination_directory')
 # shutil.rmtree('directory_path')
 # shutil.make_archive('archive', 'zip', 'directory_path')
 # shutil.unpack_archive('archive.zip', 'destination_directory')
 total, used, free = shutil.disk_usage('/')
-print(total,used,free)
+print(total, used, free)
 
 # Ruta al archivo que deseas eliminar
 archivo_a_eliminar = 'archivo.txt'
@@ -207,13 +207,11 @@ else:
     print(f"El archivo {archivo_a_eliminar} no existe.")
 
 
-from pathlib import Path
 archivo = Path('nuevo_archivo.txt')
 size = archivo.stat().st_size
 
-#Crear un Objeto Path:
+# Crear un Objeto Path:
 
-from pathlib import Path
 p = Path('.')
 
 # Unir Partes de Rutas:
@@ -225,11 +223,11 @@ existe = p.exists()
 # Verificar si es un Directorio o un Archivo:
 es_directorio = p.is_dir()
 es_archivo = p.is_file()
-
+exit()
 # Leer el Contenido de un Archivo:
 contenido = Path('archivo.txt').read_text()
 
-#Escribir en un Archivo:
+# Escribir en un Archivo:
 Path('archivo.txt').write_text("Hola, mundo!")
 
 # Trabajar con Directorios

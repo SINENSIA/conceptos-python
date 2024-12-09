@@ -51,3 +51,7 @@ def new_anadir_precio_stats(producto, precio):
 
 new_anadir_precio_stats('producto_e', 23.674)
 
+# Tipo explícito (sólo documentación) y ... para indicar que no tiene implementación
+def mi_funcion() -> int:
+   ...
+

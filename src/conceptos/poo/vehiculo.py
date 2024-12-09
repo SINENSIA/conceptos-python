@@ -22,7 +22,7 @@ class Vehiculo(ABC):
 
     @property
     def marca(self):
-        """ Retorna la marca del vehículo. """
+        """ Devuelve la marca del vehículo. """
         return self._marca
 
     @marca.setter
@@ -32,7 +32,7 @@ class Vehiculo(ABC):
 
     @property
     def modelo(self):
-        """ Retorna el modelo del vehículo. """
+        """ Devuelve el modelo del vehículo. """
         return self._modelo
 
     @modelo.setter

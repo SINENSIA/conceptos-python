@@ -5,15 +5,17 @@ elemento = notas.pop()
 
 print(elemento)
 
-lista_numeros = range(0,9)
+lista_numeros = range(0, 9)
 print(lista_numeros)
 
-productos = ["Televisor", "Afeitadora", "Calentador de agua", "Equipo de sonido", "Cafetera"]
+productos = ["Televisor", "Afeitadora",
+             "Calentador de agua", "Equipo de sonido", "Cafetera"]
 lista = productos[0:3]
 print(lista)
 
 # pylint: disable-all
-productos = ["Televisor", "Afeitadora", "Calentador de agua", "Equipo de sonido", "Cafetera"]
+productos = ["Televisor", "Afeitadora",
+             "Calentador de agua", "Equipo de sonido", "Cafetera"]
 lista = productos[-2:]
 print(lista)
 
@@ -24,13 +26,13 @@ print(provincias[-2:])
 alumno = ('Carlos', 'Fundamentos Python', 8.9)
 
 # Listas por comprensión
-items = [ 0, 0, 2, 7, 4 , 5, 2 ]
+items = [0, 0, 2, 7, 4, 5, 2]
 nueva_lista = []
 for item in items:
-  if (item > 0):
-     nueva_lista.append(item * 2)
+    if (item > 0):
+        nueva_lista.append(item * 2)
 
-nueva_lista = [ item * 2 for item in items if item > 0]
+nueva_lista = [item * 2 for item in items if item > 0]
 print(nueva_lista)
 
 monedas = ['Euro', 'Libra', 'Dólar Mejicano', 'Yen']
@@ -57,7 +59,9 @@ print(numeros)  # (1, 2, 3)
 print(letras)  # ('a', 'b', 'c')
 
 
-
 for nombre, edad in zip(nombres, edades):
     print(f"{nombre} tiene {edad} años")
 
+# Longitud de la lista len(objeto llama al método interno __len__() que podemos sobreescribir en nuestros objetos)
+print(len(monedas))
+monedas.reverse()

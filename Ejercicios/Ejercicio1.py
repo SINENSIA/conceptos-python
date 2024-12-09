@@ -27,7 +27,7 @@ def mostrar_menu():
     """
     print("\n" + COLOR_ROJO + "Gestión de Películas" + RESET_COLOR)
     print('----------------------------')
-    print(COLOR_VERDE + "1. Añadir película"  + RESET_COLOR)
+    print(f"{COLOR_VERDE}1. Añadir película {RESET_COLOR}")
     print(COLOR_AMARILLO + "2. Eliminar película"+ RESET_COLOR)
     print(COLOR_AZUL +"3. Mostrar películas"+ RESET_COLOR)
     print(COLOR_MORADO +"4. Buscar película"+ RESET_COLOR)
