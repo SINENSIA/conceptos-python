@@ -19,7 +19,8 @@ response = requests.get(url, headers=headers, params=querystring)
 
 response_data = response.json()
 
-bitcoin_id = [x['uuid'] for x in response_data['data']['coins'] if x['symbol'] == 'BTC'][0]
+bitcoin_id = [x['uuid']
+              for x in response_data['data']['coins'] if x['symbol'] == 'BTC'][0]
 
 print("El id de Bitcoin es:", bitcoin_id)
 
@@ -61,6 +62,6 @@ headers = {
 
 response = requests.get(url, headers=headers, params=querystring)
 
-data = response.json()
-
-print("Precio actual de Bitcoin en $: ", data['price'])
+data = response.json()['data']
+print(data)
+print("Precio actual de Bitcoin en $: ", round(float(data['price']), 0))

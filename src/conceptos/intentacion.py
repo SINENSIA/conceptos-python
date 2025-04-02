@@ -3,7 +3,7 @@
 def indentacion():
     """ Probar identación en Python. """
     a = 1
-    if  a == 1  :
+    if  a == 1:
         print ( "A es 1"  )
         print("Test A es 1")
     else:

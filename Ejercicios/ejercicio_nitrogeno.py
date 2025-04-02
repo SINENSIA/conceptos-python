@@ -1,12 +1,16 @@
 # Datos de entrada: Lista de temperaturas en grados Celsius
-temperaturas_celsius = [20, -150, -197, -100, -146, -200, 0, 30, -196]
+temperaturas_celsius = [20, -150, -197, -100, -146, -200, 0, 30, -208]
 
 # Temperatura crítica del nitrógeno en grados Celsius
 temperatura_critica_nitrogeno = -196
 
-# Utilizar una lista por comprensión para filtrar temperaturas
 # Solo incluir temperaturas donde el nitrógeno permanece gaseoso (temperatura >= temperatura crítica)
 temperaturas_gaseosas = [
-    temp for temp in temperaturas_celsius if temp >= temperatura_critica_nitrogeno]
+    temperatura for temperatura in temperaturas_celsius if temperatura >= temperatura_critica_nitrogeno]
 
 print(temperaturas_gaseosas)
+
+temperaturas_liquidas = [
+    temperatura for temperatura in temperaturas_celsius if temperatura < temperatura_critica_nitrogeno]
+
+print(temperaturas_liquidas)

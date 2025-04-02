@@ -9,7 +9,7 @@ import shutil
 # Obtener directorio actual de trabajo
 cwd = os.getcwd()
 print(cwd)
-
+exit()
 # cRear nun directorio
 if not os.path.exists('prueba'):
     os.mkdir('prueba')

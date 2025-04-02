@@ -51,6 +51,7 @@ print(cuadrados)
 
 print("----- Desempequetado ------")
 print(f"Tiene {len(cuadrados)} items")
+
 valor1, valor2, valor3, *resto_de_valores = cuadrados
 print(valor1, valor2, valor3, resto_de_valores)
 

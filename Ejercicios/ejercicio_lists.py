@@ -8,9 +8,12 @@ empleados = [
 
 empleados_shallow = empleados.copy()
 # añado test a Pêdro
-empleados_shallow[0][1].append('Testing')
+# empleados_shallow[0][1].append('Testing')
 
 empleados_deep = copy.deepcopy(empleados)
+
+# añado test a Pêdro
+empleados_shallow[0][1].append('Testing')
 
 # en la lista original añado bash
 empleados[0][1].append("Bash")
