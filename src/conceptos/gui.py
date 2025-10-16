@@ -1,3 +1,5 @@
+from importlib.resources import files, as_file
+from pathlib import Path
 import tkinter as tk
 import random
 from tkinter import PhotoImage
@@ -13,8 +15,22 @@ def move_button(event):
 root = tk.Tk()
 root.geometry('400x400')
 
-# Load an image file
-background_image = PhotoImage(file='are_you_sure.gif')
+# Load an image file (works installed or run directly)
+def _resolve_image(rel_path: str) -> str:
+    try:
+        pkg = __package__.split('.')[0] if __package__ else 'conceptos'
+        res = files(pkg).joinpath(rel_path)
+        try:
+            with as_file(res) as on_disk:
+                return str(on_disk)
+        except Exception:
+            return str(res)
+    except Exception:
+        return str((Path(__file__).resolve().parent / rel_path))
+
+# Use available demo image in resources
+img_path = _resolve_image('resources/images/are_you_sure.gif')
+background_image = PhotoImage(file=img_path)
 
 # Create a label with image
 background_label = tk.Label(root, image=background_image)

@@ -3,9 +3,7 @@ import platform
 import re
 import json
 import requests
-from dotenv import load_dotenv
 
-load_dotenv()
 
 
 # ANSI para colores

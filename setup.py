@@ -5,6 +5,13 @@ setup(
     version='0.1.0',
     packages=find_packages(where="src"),
     package_dir={"": "src"},
+    include_package_data=True,
+    package_data={
+        "conceptos": [
+            "resources/*",
+            "resources/**/*",
+        ]
+    },
     entry_points={
         'console_scripts': [
             'indentacion = conceptos.identacion:indentacion',
