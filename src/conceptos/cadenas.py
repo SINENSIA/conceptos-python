@@ -3,6 +3,7 @@ print("Hola mundo")
 print("""Este texto
 se representará 
 en varias líneas
+todo el texto que escriba
 """)
 # 
 num_lineas = 3
@@ -24,8 +25,7 @@ def print_multilinea(texto, num_lineas):
     en {num_lineas} líneas
     """)
     print(test)
-
-
+    
 print_multilinea("Este texto", 4)
 
 
@@ -34,3 +34,4 @@ str = "lorem ipsum doror sit amen"
 print(str.capitalize())
 print(str.upper())
 print(str.casefold())
+

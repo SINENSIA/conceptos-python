@@ -27,6 +27,7 @@ def mostrar_menu():
     Returns:
         str: La opción elegida por el usuario.
     """
+
     print("\n" + COLOR_ROJO + "Gestión de Películas" + RESET_COLOR)
     print('----------------------------')
     print(COLOR_VERDE + "1. Añadir película" + RESET_COLOR)
@@ -42,7 +43,7 @@ def mostrar_menu():
     return opcion
 
 
-def añadir_pelicula(peliculas):
+def anadir_pelicula(peliculas):
     """
     Añade una nueva película a la lista si no está ya en ella.
 
@@ -57,12 +58,12 @@ def añadir_pelicula(peliculas):
     if pelicula not in peliculas:
 
         director = input("Director de la película: ")
-        año = input("Año de lanzamiento: ")
+        anyo = input("Año de lanzamiento: ")
         presupuesto = input("Presupuesto (en millones): ")
 
         peliculas[pelicula] = {
             "director": director,
-            "año": año,
+            "año": anyo,
             "presupuesto": presupuesto
         }
         print("Película añadida.")
@@ -164,12 +165,12 @@ def modificar_pelicula(peliculas):
         print("Introduce los nuevos datos (deja en blanco para no modificar):")
         director = input(
             f"Nuevo director (Actual: {peliculas[nombre]['director']}): ") or peliculas[nombre]['director']
-        año = input(
+        anyo = input(
             f"Nuevo año (Actual: {peliculas[nombre]['año']}): ") or peliculas[nombre]['año']
         presupuesto = input(
             f"Nuevo presupuesto (Actual: {peliculas[nombre]['presupuesto']}): ") or peliculas[nombre]['presupuesto']
         peliculas[nombre] = {"director": director,
-                             "año": año, "presupuesto": presupuesto}
+                             "año": anyo, "presupuesto": presupuesto}
         print("Película modificada.")
     else:
         print("La película no se encuentra en la lista.")
@@ -220,7 +221,7 @@ def main():
 
         opcion = mostrar_menu()
         if opcion == "1":
-            añadir_pelicula(peliculas)
+            anadir_pelicula(peliculas)
         elif opcion == "2":
             eliminar_pelicula(peliculas)
         elif opcion == "3":
@@ -235,7 +236,12 @@ def main():
             print(COLOR_ROJO + "Saliendo del programa..." + RESET_COLOR)
             break
         else:
-            print("Opción no válida. Por favor, elige una opción del 1 al 5.")
+            limpiar_terminal()
+
+            print(COLOR_AMARILLO + '----------------------------' + RESET_COLOR)
+            print(COLOR_ROJO + "⚠️ ⚠️  Opción no válida.⚠️ ⚠️" + RESET_COLOR)
+            print("Por favor, elige una opción del 1 al 5.".upper() + RESET_COLOR)
+            print(COLOR_AMARILLO + '----------------------------' + RESET_COLOR)
     print('----------------------------')
 
 

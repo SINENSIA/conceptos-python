@@ -7,5 +7,10 @@ def fibonacci():
 
 # Prueba el generador infinito
 fib = fibonacci()
-for _ in range(25):  
+for _ in range(25):
     print(next(fib))
+    
+print("======")
+print([next(fib) for _ in range(25) ])
+    
+
