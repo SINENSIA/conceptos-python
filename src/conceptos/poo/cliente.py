@@ -27,7 +27,7 @@ class Cliente(Persona):
         # Aquí llamamos a setter. La propiedad es privada como vemos en el cuerpo del setter y del getter
         self.id_cliente = id_cliente
         self._email = email
-        type(self)._numero_de_instancias += 1
+        Cliente._numero_de_instancias += 1
     # operación de venta
 
     @property

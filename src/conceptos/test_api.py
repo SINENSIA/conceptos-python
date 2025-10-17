@@ -1,12 +1,16 @@
 import requests
 import json
+import os
+from dotenv import load_dotenv
 
-url = "https://www.omdbapi.com/?apikey=b50f00d8&s=Avatar"
+load_dotenv()
 
-payload = {}
-headers = {}
+OMDB_URL = os.getenv("OMDB_URL", "https://www.omdbapi.com/")
+OMDB_API_KEY = os.getenv("OMDB_API_KEY", "")
 
-response = requests.request("GET", url, headers=headers, data=payload)
+url = f"{OMDB_URL}?apikey={OMDB_API_KEY}&s=Avatar"
+
+response = requests.get(url)
 
 # Guardar el contenido de la respuesta en un archivo JSON
 with open("resultado.json", "w") as json_file:

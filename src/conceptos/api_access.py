@@ -41,8 +41,8 @@ url = f"https://{ coinrankin_host }/coin/{bitcoin_id}"
 querystring = {"referenceCurrencyUuid": "yhjMzLPhuIDl", "timePeriod": "24h"}
 
 headers = {
-    "X-RapidAPI-Key": "012607e2aamsh5f135f5cf38586ap1f1dbejsna2d4b1f5493e",
-    "X-RapidAPI-Host": "coinranking1.p.rapidapi.com"
+    "X-RapidAPI-Key": os.getenv('RAPIDAPI_TOKEN'),
+    "X-RapidAPI-Host": coinrankin_host
 }
 
 response = requests.get(url, headers=headers, params=querystring)
@@ -56,8 +56,8 @@ url = f"https://{ coinrankin_host }/coin/{bitcoin_id}/price"
 querystring = {"referenceCurrencyUuid": "yhjMzLPhuIDl"}
 
 headers = {
-    "X-RapidAPI-Key": "012607e2aamsh5f135f5cf38586ap1f1dbejsna2d4b1f5493e",
-    "X-RapidAPI-Host": "coinranking1.p.rapidapi.com"
+    "X-RapidAPI-Key": os.getenv('RAPIDAPI_TOKEN'),
+    "X-RapidAPI-Host": coinrankin_host
 }
 
 response = requests.get(url, headers=headers, params=querystring)
