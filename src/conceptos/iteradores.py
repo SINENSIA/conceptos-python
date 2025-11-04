@@ -47,6 +47,7 @@ mi_contador = contador(5)
 # Otra forma de iterar sobre un generador
 try:
     print(next(mi_contador))  # Imprime 0
+    print("hola")
     print(next(mi_contador))  # Imprime 1
     print(next(mi_contador))  # Imprime 2
     print(next(mi_contador))  # Imprime 3

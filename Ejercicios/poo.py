@@ -1,8 +1,5 @@
 
 from abc import ABC, abstractmethod
-import gc
-import time
-
 
 class Persona(ABC):
     def __init__(self, nombre, apellidos, id_fiscal):
@@ -70,6 +67,7 @@ class Factura:
 
 # uso declietne
 if __name__ == "__main__":
+    
     cliente1 = Cliente("Pepito", "Pérez", "12345678Z",
                        1, "pepito.perez@example.com")
     cliente2 = Cliente("Juanita", "López", "876548821B",

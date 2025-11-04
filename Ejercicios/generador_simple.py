@@ -4,5 +4,7 @@ def cuadrados(maximo):
 
 
 # Prueba el generador
-for cuadrado in cuadrados(5):
-    print(cuadrado)
+#for cuadrado in cuadrados(5):
+#    print(cuadrado)
+next(cuadrados)
+next(cuadrados)

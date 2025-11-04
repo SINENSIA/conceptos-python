@@ -7,6 +7,10 @@ try:
     mi_tupla[0] = 1
 except TypeError:
     print("Error una tupla no se puede modificar")
+else:
+    print("No hubo excepción. Seguir trabajando.")
+finally:
+    print("Esto siempre se ejecuta")
 
 # Creamos una tupla mixta. Recuerda que una tupla es inmutable y puede contener otro tipos de datos como lsitas, cadenas, enteros, etc.
 

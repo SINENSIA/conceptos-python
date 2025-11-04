@@ -5,11 +5,12 @@ from pathlib import Path
 import os
 import time
 import shutil
+from datetime import datetime
 
 # Obtener directorio actual de trabajo
 cwd = os.getcwd()
 print(cwd)
-exit()
+
 # cRear nun directorio
 if not os.path.exists('prueba'):
     os.mkdir('prueba')
@@ -21,9 +22,10 @@ with open('nuevo_archivo.txt', 'w', encoding='UTF-8') as archivo:
     archivo.write("Contenido del nuevo archivo con write.")
 
 with open('nuevo_archivo.txt', 'a', encoding='UTF-8') as archivo:
-    archivo.write("\nAñadiendo contenido 1 al archivo.")
-    archivo.write("\nAñadiendo contenido 2 al archivo.")
-    archivo.write("\nAñadiendo contenido 3 al archivo.")
+    archivo.write("\nAñadiendo contenido 1 al archivo. " +
+                  datetime.now().strftime("%d/%m/%Y %H:%M"))
+    archivo.write("\nAñadiendo contenido 2 al archivo. " + str(datetime.now()))
+    archivo.write("\nAñadiendo contenido 3 al archivo. " + str(datetime.now()))
 
 # Ejemplo iterando por un list de lineas
 lineas = ["Añadiendo contenido 4 al archivo.\n",
@@ -40,8 +42,10 @@ with open('nuevo_archivo.txt', 'w', encoding='UTF-8') as file:
 # Usando print y la redirección a archivo nos podemos beneficiar de que print
 # siempre imprime el caracter de nueva línea
 with open('nuevo_archivo.txt', 'w', encoding='UTF-8') as file:
-    print("Primera línea con print", file=file)
-    print("Segunda línea con print", file=file)
+    print("Primera línea con print " +
+          datetime.now().strftime("%d/%m/%Y %H:%M:%S"), file=file)
+    print("Segunda línea con print " +
+          datetime.now().strftime("%d/%m/%Y %H:%M:%S"), file=file)
 
 # Pero si no queremos sobreescribir el archivo usamos append
 # Ejemplo básico
@@ -65,34 +69,34 @@ print(contenido)
 with open('nuevo_archivo.txt', 'r', encoding='UTF-8') as file:
     contenido = file.read(10)
 print('---- contenido con read 10  ------')
-# print(contenido)
+print(contenido)
 
 # Lee la siguiente línea del archivo.
-"""
-print('---- contenido con readline ------')  
-contador = 0  
+
+print('---- contenido con readline ------')
+contador = 0
 with open('nuevo_archivo.txt', 'r', encoding='UTF-8') as file:
     while True:
-       linea = file.readline()
-       if not linea:
-           break
-       
-       print(f'---- linea {contador} ------')   
-       contador += 1 
-       print(linea.strip())
+        linea = file.readline()
+        if not linea:
+            break
 
-## Lee todas las líneas del archivo y las devuelve como una lista.
+        print(f'---- linea {contador} ------')
+        contador += 1
+        print(linea.strip())
+
+# Lee todas las líneas del archivo y las devuelve como una lista.
 with open('nuevo_archivo.txt', 'r', encoding='UTF-8') as file:
     lineas = file.readlines()
 print(lineas)
-"""
+
 
 # readlines() no permite especificar rango pero es fáci con lists
 with open('nuevo_archivo.txt', 'r', encoding='UTF-8') as file:
     lineas = file.readlines()
 # Las listas en Python tienen índice basado en cero
 lineas_seleccionadas = lineas[2:7]
-# print(lineas_seleccionadas)
+print(lineas_seleccionadas)
 
 # readline() leer un numero específico de lineas
 lineas = []
@@ -120,8 +124,8 @@ try:
     with open('archivo_inexistente.txt', 'r') as archivo:
         contenido = archivo.read()
 except FileNotFoundError:
-    print('El archivo no existe')       
-     
+    print('El archivo no existe')
+
 """
 # Seek()
 with open('nuevo_archivo.txt', 'r+', encoding='UTF-8') as archivo:
@@ -134,7 +138,7 @@ with open('nuevo_archivo.txt', 'r+', encoding='UTF-8') as archivo:
     contenido = archivo.read()
 print('--- contenido ---')
 print(contenido)
-
+exit()
 
 os.listdir('.')
 

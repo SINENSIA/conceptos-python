@@ -18,9 +18,8 @@ for linea in texto_largo:
             f"\nBloque de texto {contador_bloques}:\n{bloque_actual.strip()}")
         bloque_actual = ""
         # Finalizar después del bloque 3
-    if contador_bloques >= 3:
-        break
-
+    
+print(f"Total bloques: {contador_bloques}")
 # Si quedaron líneas sin cerrar el último bloque
 if bloque_actual:
     contador_bloques += 1

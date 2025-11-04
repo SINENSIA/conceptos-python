@@ -15,10 +15,9 @@ def get_duracion(k):
 
 
 # tres_mas_largas = sorted(
-#    diccionario, key=lambda k: diccionario[k], reverse=True)[:3]
+# diccionario, key=lambda k: diccionario[k], reverse=True)[:3]
 tres_mas_largas = sorted(diccionario, key=get_duracion, reverse=True)[:3]
-# tres_mas_largas = sorted(
-#    diccionario, key=lambda k: diccionario.get(k), reverse=True)[:3]
+# tres_mas_largas = sorted(diccionario, key=lambda k: diccionario.get(k), reverse=True)[:3]
 
 print("Las tres canciones más largas son:")
 

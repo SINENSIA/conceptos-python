@@ -1,3 +1,6 @@
+
+
+
 class RecursoControlado:
     def __enter__(self):
         print("[ENTER] Abriendo recurso...")
